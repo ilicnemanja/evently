@@ -6,6 +6,7 @@ let cached = (global as any).mongoose || { conn: null, promise: null };
 
 export const connectToDatabase = async () => {
   if (cached.conn) {
+    console.log("Connected to database");
     return cached.conn;
   }
 
@@ -24,5 +25,6 @@ export const connectToDatabase = async () => {
 
   cached.conn = await cached.promise;
 
+  console.log("Connected to database");
   return cached.conn;
 };
